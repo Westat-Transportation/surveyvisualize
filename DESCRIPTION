@@ -1,0 +1,23 @@
+Package: hatviz
+Title: What the Package Does (one line, title case)
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Alex", "Cates", email = "AlexanderCates@westat.com",role = c("aut", "cre")),
+    person("Anthony", "Fucci", email = "AnthonyFucci@westat.com",role = c("aut")),
+    person("Marcelo", "Simas", email = "MarceloSimas@westat.com",role = c("aut"))
+    )
+Description: Vizualization functions for producing tables, charts, and maps.
+Depends:
+    R (>= 3.2.0),
+    ggplot2
+License: GPL-3
+Imports:
+    data.table,
+    ggiraph,
+    htmlTable,
+    magrittr,
+    rgdal,
+    sp
+LazyData: true
+RoxygenNote: 6.1.1
+Encoding: UTF-8
