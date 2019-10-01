@@ -18,6 +18,7 @@
 #' @param ... Optional formatting arguments. See \link[surveyvisualize]{format_values}.
 #'
 #' @import ggiraph
+#' @importFrom knitr is_html_output
 #'
 #' @export
 make_chart <- function(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL, interactive = TRUE,
@@ -188,7 +189,10 @@ make_chart <- function(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL, inter
 
   if(flip) g <- g + coord_flip()
 
-  if(use_ggiraph == TRUE & knitr::is_html_output()) {
+  if(
+    (use_ggiraph == TRUE & !isTRUE(getOption('knitr.in.progress')))
+    | (use_ggiraph == TRUE & is_html_output())
+    ) {
     ggiraph_options_default <- list(
       ggobj = g,
       hover_css = 'opacity: 0.5;stroke: #ffec8b; cursor: crosshair;'
