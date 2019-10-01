@@ -1,5 +1,5 @@
-Package: hatviz
-Title: What the Package Does (one line, title case)
+Package: surveyvisualize
+Title: Survey Visualize
 Version: 0.0.0.9000
 Authors@R: c(
     person("Alex", "Cates", email = "AlexanderCates@westat.com",role = c("aut", "cre")),
@@ -13,11 +13,12 @@ Depends:
 License: GPL-3
 Imports:
     data.table,
+    rstudioapi,
+    rmarkdown,
+    logging,
     ggiraph,
-    htmlTable,
-    magrittr,
-    rgdal,
-    sp
+    pander,
+    sf
 LazyData: true
 RoxygenNote: 6.1.1
 Encoding: UTF-8
