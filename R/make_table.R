@@ -1,6 +1,6 @@
 #' @title Make HTML Table
 #'
-#' @description Make formatted HTML tables utilizing \link[kableExtra]{kableExtra-package}
+#' @description Make formatted tables.
 #'
 #' @param tbl Analysis table (data.table object).
 #' @param row_vars Group variables to be represented in the row position.
@@ -8,7 +8,7 @@
 #' @param title Title of the table
 #' @param confidence Confidence level for margin of error calculation. Defaults to 0.90. Set to NULL for standard error.
 #' @param ... Optional formatting arguments. See \link[surveyvisualize]{format_values}.
-#' @return A kableExtra object.
+#' @return An html, pdf, or docx table.
 #'
 #' @importFrom pander pander pander_return
 #' @importFrom data.table copy

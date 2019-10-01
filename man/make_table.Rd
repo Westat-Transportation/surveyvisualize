@@ -21,8 +21,8 @@ make_table(tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95,
 \item{title}{Title of the table}
 }
 \value{
-A kableExtra object.
+An html, pdf, or docx table.
 }
 \description{
-Make formatted HTML tables utilizing \link[kableExtra]{kableExtra-package}
+Make formatted tables.
 }
