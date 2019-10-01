@@ -16,9 +16,11 @@ make_table(tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95,
 
 \item{confidence}{Confidence level for margin of error calculation. Defaults to 0.90. Set to NULL for standard error.}
 
-\item{...}{Optional formatting arguments. See \link[surveyvisualize]{format_values}.}
+\item{variable_labels}{logical. Use labels for variable names?}
 
-\item{title}{Title of the table}
+\item{use_viewer}{locical. If interactive, render markdown table as html to be displayed in viewer pane?}
+
+\item{...}{Optional formatting arguments. See \link[surveyvisualize]{format_values}.}
 }
 \value{
 An html, pdf, or docx table.

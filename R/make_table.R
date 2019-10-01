@@ -5,8 +5,9 @@
 #' @param tbl Analysis table (data.table object).
 #' @param row_vars Group variables to be represented in the row position.
 #' @param col_vars Group variables to be represented in the column position.
-#' @param title Title of the table
 #' @param confidence Confidence level for margin of error calculation. Defaults to 0.90. Set to NULL for standard error.
+#' @param variable_labels logical. Use labels for variable names?
+#' @param use_viewer locical. If interactive, render markdown table as html to be displayed in viewer pane?
 #' @param ... Optional formatting arguments. See \link[surveyvisualize]{format_values}.
 #' @return An html, pdf, or docx table.
 #'
