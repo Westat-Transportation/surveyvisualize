@@ -4,8 +4,8 @@
 \alias{make_table}
 \title{Make HTML Table}
 \usage{
-make_table(tbl, row_vars = NULL, col_vars = NULL, title = NULL,
-  confidence = 0.9, ...)
+make_table(tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95,
+  variable_labels = TRUE, use_viewer = TRUE, ...)
 }
 \arguments{
 \item{tbl}{Analysis table (data.table object).}
@@ -14,11 +14,11 @@ make_table(tbl, row_vars = NULL, col_vars = NULL, title = NULL,
 
 \item{col_vars}{Group variables to be represented in the column position.}
 
-\item{title}{Title of the table}
-
 \item{confidence}{Confidence level for margin of error calculation. Defaults to 0.90. Set to NULL for standard error.}
 
 \item{...}{Optional formatting arguments. See \link[surveyvisualize]{format_values}.}
+
+\item{title}{Title of the table}
 }
 \value{
 A kableExtra object.
