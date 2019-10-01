@@ -20,7 +20,10 @@ NULL
 
 #' @export
 make_map <- function(tbl, tbl_geo_id, geo_layer, geo_layer_id = guess_geo_layer_id(geo_layer),
-                      geo_layer_name = guess_geo_layer_name(geo_layer), tbl2 = NULL, confidence = 0.9, ...) {
+                      geo_layer_name = guess_geo_layer_name(geo_layer), tbl2 = NULL, 
+                     confidence = 0.95, use_ggiraph = TRUE, ...) {
+  
+  loginfo(paste('Calling map maker:', format(match.call())))
 
   # If geo_layer is character, assume it is a shapefile and pass to st_read
   if (is.character(geo_layer)) {
@@ -123,13 +126,17 @@ make_map <- function(tbl, tbl_geo_id, geo_layer, geo_layer_id = guess_geo_layer_
       labels = format_values_call
     )
 
-  # Render girafe plot
-  girafe(ggobj = gg) %>%
-    girafe_options(
-      opts_sizing(width = 0.7),
-      opts_tooltip(css = tooltip_css),
-      opts_hover(css = "border:0; fill:#fff7bc; cursor: crosshair;")
-    )
+  if (use_ggiraph == TRUE) {
+      # Render girafe plot
+      gg <- girafe(ggobj = gg)
+      girafe_options(
+        x = gg,
+        opts_sizing(width = 0.7),
+        opts_tooltip(css = tooltip_css),
+        opts_hover(css = "border:0; fill:#fff7bc; cursor: crosshair;")
+      )
+  } else gg
+
 
 }
 

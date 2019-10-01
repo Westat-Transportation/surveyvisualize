@@ -6,9 +6,9 @@
 \usage{
 make_chart(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL,
   interactive = TRUE, order = FALSE, flip = FALSE,
-  flat_print = FALSE, palette = "Set3", variable_labels = TRUE,
-  label_options = list(wrap = 35, trunc = 100), legend = TRUE,
-  confidence = 0.9, ggiraph_options = list(), ...)
+  palette = "Set3", variable_labels = TRUE, label_options = list(wrap
+  = 35, trunc = 100), legend = TRUE, confidence = 0.95,
+  use_ggiraph = TRUE, ggiraph_options = list(), ...)
 }
 \arguments{
 \item{tbl}{Analysis table (data.table object).}
@@ -27,8 +27,6 @@ make_chart(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL,
 
 \item{flip}{logical. Flip x and y axes?}
 
-\item{flat_print}{logical. Print as ggpplot object instead ggiraph object?}
-
 \item{palette}{character. A color pallete to be used for the fill variable. See pallete argument here \link[ggplot2]{scale_fill_brewer}}
 
 \item{legend}{logical. Include a legend?}
@@ -38,6 +36,8 @@ make_chart(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL,
 \item{ggiraph_options}{Optional list of options to pass to \link[ggiraph]{ggiraph}.}
 
 \item{...}{Optional formatting arguments. See \link[surveyvisualize]{format_values}.}
+
+\item{flat_print}{logical. Print as ggpplot object instead ggiraph object?}
 }
 \description{
 Make interactive bar charts utilizing \link[ggiraph]{ggiraph}.

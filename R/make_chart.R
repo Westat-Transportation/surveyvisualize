@@ -21,10 +21,12 @@
 #'
 #' @export
 make_chart <- function(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL, interactive = TRUE,
-                       order = FALSE, flip = FALSE, flat_print = FALSE, palette = 'Set3',
-                       variable_labels = TRUE, label_options = list(wrap = 35, trunc = 100),
-                       legend = TRUE, confidence = 0.90, ggiraph_options = list(), ...) {
+                       order = FALSE, flip = FALSE, palette = 'Set3', variable_labels = TRUE, 
+                       label_options = list(wrap = 35, trunc = 100), legend = TRUE, confidence = 0.95, 
+                       use_ggiraph = TRUE, ggiraph_options = list(), ...) {
 
+  loginfo(paste('Calling chart maker:', format(match.call())))
+  
   # Apply margin of error
   tbl <- use_moe(tbl, confidence)
 
@@ -186,7 +188,7 @@ make_chart <- function(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL, inter
 
   if(flip) g <- g + coord_flip()
 
-  if(flat_print == F) {
+  if(use_ggiraph == TRUE & knitr::is_html_output()) {
     ggiraph_options_default <- list(
       ggobj = g,
       hover_css = 'opacity: 0.5;stroke: #ffec8b; cursor: crosshair;'

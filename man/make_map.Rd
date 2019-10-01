@@ -7,7 +7,7 @@
 make_map(tbl, tbl_geo_id, geo_layer,
   geo_layer_id = guess_geo_layer_id(geo_layer),
   geo_layer_name = guess_geo_layer_name(geo_layer), tbl2 = NULL,
-  confidence = 0.9, ...)
+  confidence = 0.95, use_ggiraph = TRUE, ...)
 }
 \arguments{
 \item{tbl}{Analysis table (data.table object).}
