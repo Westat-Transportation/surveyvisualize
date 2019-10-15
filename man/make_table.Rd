@@ -5,7 +5,8 @@
 \title{Make HTML Table}
 \usage{
 make_table(tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95,
-  variable_labels = TRUE, use_viewer = TRUE, ...)
+  variable_labels = TRUE, use_viewer = TRUE,
+  stat_vars = c("Estimate", "SE", "Survey", "N"), ...)
 }
 \arguments{
 \item{tbl}{Analysis table (data.table object).}
@@ -18,7 +19,9 @@ make_table(tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95,
 
 \item{variable_labels}{logical. Use labels for variable names?}
 
-\item{use_viewer}{locical. If interactive, render markdown table as html to be displayed in viewer pane?}
+\item{use_viewer}{logical. If interactive, render markdown table as html to be displayed in viewer pane?}
+
+\item{stat_vars}{Select the statistic output columns to include or change or rearrange their default order.}
 
 \item{...}{Optional formatting arguments. See \link[surveyvisualize]{format_values}.}
 }

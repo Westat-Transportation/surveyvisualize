@@ -7,7 +7,8 @@
 #' @param col_vars Group variables to be represented in the column position.
 #' @param confidence Confidence level for margin of error calculation. Defaults to 0.90. Set to NULL for standard error.
 #' @param variable_labels logical. Use labels for variable names?
-#' @param use_viewer locical. If interactive, render markdown table as html to be displayed in viewer pane?
+#' @param use_viewer logical. If interactive, render markdown table as html to be displayed in viewer pane?
+#' @param stat_vars Select the statistic output columns to include or change or rearrange their default order.
 #' @param ... Optional formatting arguments. See \link[surveyvisualize]{format_values}.
 #' @return An html, pdf, or docx table.
 #'
@@ -19,9 +20,14 @@
 
 
 #' @export
-make_table <- function(tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95, variable_labels = TRUE, use_viewer = TRUE, ...) {
+make_table <- function(tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95, variable_labels = TRUE, use_viewer = TRUE, stat_vars = c("Estimate","SE","Survey","N"), ...) {
 
   loginfo(paste('Calling table maker:', format(match.call())))
+  
+	# Rearrange or drop output stats columns as requested
+	stat_vars_possible <- c("Estimate","SE","Survey","N")
+	input_vars <- names(tbl)[!names(tbl) %in% stat_vars_possible]
+	tbl <- tbl[, c(input_vars, stat_vars), with=F]
   
   if (!is.null(row_vars) & !is.null(col_vars)) {
     logerror('Specify either row_vars or col_vars, not both.')
