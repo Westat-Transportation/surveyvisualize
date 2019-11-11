@@ -19,7 +19,7 @@ format_values <- function(x,
   format_flag <- ifelse(scientific == F, 'f', 'E')
   if (!is.null(multiplier)) x <- x / multiplier
   if (all(x == as.integer(x), na.rm = T)) digits <- 0
-  if (percentage == T & as.numeric(x)<1.0) {
+  if (percentage == T && length(x)==1 && as.numeric(x) < 1.0) {
     x <- paste0(formatC(100 * x, format = format_flag, digits = digits), '%')
   }
   x <- formatC(x, format=format_flag, digits = digits, big.mark=",")
