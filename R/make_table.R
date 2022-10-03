@@ -38,7 +38,7 @@ make_table <- function(tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95,
   by_labels <- unlist(attr(tbl, 'by_label'))
   
   # Calculate margin of Error
-  if (!is.null(confidence)) {
+  if (!is.null(confidence) & all(c("Estimate","SE") %in% input_vars)) {
     loginfo('Updating table to use Margin of Error.')
     tbl <- use_moe(tbl, confidence = confidence)
     setnames(tbl, 'SE', attr(tbl, 'moe_col'))
