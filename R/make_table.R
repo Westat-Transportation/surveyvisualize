@@ -20,7 +20,12 @@
 
 
 #' @export
-make_table <- function(tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95, variable_labels = TRUE, use_viewer = TRUE, stat_vars = c("Estimate","SE","Survey","N"), ...) {
+make_table <- function(
+  tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95,
+  variable_labels = TRUE, use_viewer = TRUE, stat_vars = c("Estimate", "SE", "Survey", "N"), 
+  stat_vars_output_names = list("Estimate" = "Estimate", "SE" = "SE", "Survey" = "Survey", "N" = "N"), 
+  ...
+) {
 
   loginfo(paste('Calling table maker:', format(match.call())))
   
@@ -38,10 +43,17 @@ make_table <- function(tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95,
   by_labels <- unlist(attr(tbl, 'by_label'))
   
   # Calculate margin of Error
-  if (!is.null(confidence) & all(c("Estimate","SE") %in% input_vars)) {
+  if (!is.null(confidence) & all(c("Estimate","SE") %in% stat_vars)) {
     loginfo('Updating table to use Margin of Error.')
     tbl <- use_moe(tbl, confidence = confidence)
     setnames(tbl, 'SE', attr(tbl, 'moe_col'))
+  }
+
+  for(rename_from in names(stat_vars_output_names)) {
+    rename_to <- stat_vars_output_names[[rename_from]]
+    if(rename_from %in% names(tbl)) {
+      setnames(tbl, rename_from, rename_to)
+    }
   }
 
   # Create contingency table
