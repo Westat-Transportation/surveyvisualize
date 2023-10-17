@@ -4,11 +4,24 @@
 \alias{make_chart}
 \title{Make Interactive Charts}
 \usage{
-make_chart(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL,
-  interactive = TRUE, order = FALSE, flip = FALSE,
-  palette = "Set3", variable_labels = TRUE, label_options = list(wrap
-  = 35, trunc = 100), legend = TRUE, confidence = 0.95,
-  use_ggiraph = TRUE, ggiraph_options = list(), ...)
+make_chart(
+  tbl,
+  x = NULL,
+  y = NULL,
+  fill = NULL,
+  facet = NULL,
+  interactive = TRUE,
+  order = FALSE,
+  flip = FALSE,
+  palette = "Set3",
+  variable_labels = TRUE,
+  label_options = list(wrap = 35, trunc = 100),
+  legend = TRUE,
+  confidence = 0.95,
+  use_girafe = TRUE,
+  girafe_options = list(),
+  ...
+)
 }
 \arguments{
 \item{tbl}{Analysis table (data.table object).}
@@ -21,7 +34,7 @@ make_chart(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL,
 
 \item{facet}{logical. Variable to be categorized by faceted grid.}
 
-\item{interactive}{logical. Print as ggpplot object instead ggiraph object?}
+\item{interactive}{logical. Print as girafe object instead of ggplot object?}
 
 \item{order}{logical. Order by values instead of natural order?}
 
@@ -33,12 +46,12 @@ make_chart(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL,
 
 \item{confidence}{Confidence level for margin of error calculation. Defaults to 0.90. Set to NULL for standard error.}
 
-\item{ggiraph_options}{Optional list of options to pass to \link[ggiraph]{ggiraph}.}
+\item{girafe_options}{Optional list of options to pass to \link[ggiraph]{girafe}.}
 
 \item{...}{Optional formatting arguments. See \link[surveyvisualize]{format_values}.}
 
-\item{flat_print}{logical. Print as ggpplot object instead ggiraph object?}
+\item{flat_print}{logical. Print as ggplot object instead of girafe object?}
 }
 \description{
-Make interactive bar charts utilizing \link[ggiraph]{ggiraph}.
+Make interactive bar charts utilizing \link[ggiraph]{girafe}.
 }

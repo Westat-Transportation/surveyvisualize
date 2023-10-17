@@ -4,10 +4,13 @@
 \alias{format_values}
 \title{Format numeric values}
 \usage{
-format_values(x, digits = getOption("surveyvisualize.format.digits"),
+format_values(
+  x,
+  digits = getOption("surveyvisualize.format.digits"),
   percentage = getOption("surveyvisualize.format.percentage"),
   scientific = getOption("surveyvisualize.format.scientific"),
-  multiplier = getOption("surveyvisualize.format.multiplier"))
+  multiplier = getOption("surveyvisualize.format.multiplier")
+)
 }
 \arguments{
 \item{x}{Numeric vector.}

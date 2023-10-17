@@ -4,10 +4,17 @@
 \alias{make_map}
 \title{Make Interactive Maps}
 \usage{
-make_map(tbl, tbl_geo_id, geo_layer,
+make_map(
+  tbl,
+  tbl_geo_id,
+  geo_layer,
   geo_layer_id = guess_geo_layer_id(geo_layer),
-  geo_layer_name = guess_geo_layer_name(geo_layer), tbl2 = NULL,
-  confidence = 0.95, use_ggiraph = TRUE, ...)
+  geo_layer_name = guess_geo_layer_name(geo_layer),
+  tbl2 = NULL,
+  confidence = 0.95,
+  use_girafe = TRUE,
+  ...
+)
 }
 \arguments{
 \item{tbl}{Analysis table (data.table object).}
@@ -27,8 +34,8 @@ make_map(tbl, tbl_geo_id, geo_layer,
 \item{...}{Optional formatting arguments. See \link[surveyvisualize]{format_values}.}
 }
 \value{
-ggiraph/htmlwidget class object
+girafe/htmlwidget class object
 }
 \description{
-Make interactive maps utilizing \link[ggiraph]{ggiraph}.
+Make interactive maps utilizing \link[ggiraph]{girafe}.
 }

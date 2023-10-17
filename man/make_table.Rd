@@ -4,9 +4,18 @@
 \alias{make_table}
 \title{Make HTML Table}
 \usage{
-make_table(tbl, row_vars = NULL, col_vars = NULL, confidence = 0.95,
-  variable_labels = TRUE, use_viewer = TRUE,
-  stat_vars = c("Estimate", "SE", "Survey", "N"), ...)
+make_table(
+  tbl,
+  row_vars = NULL,
+  col_vars = NULL,
+  confidence = 0.95,
+  variable_labels = TRUE,
+  use_viewer = TRUE,
+  stat_vars = c("Estimate", "SE", "Survey", "N"),
+  stat_vars_output_names = list(Estimate = "Estimate", SE = "SE", Survey = "Survey", N =
+    "N"),
+  ...
+)
 }
 \arguments{
 \item{tbl}{Analysis table (data.table object).}
