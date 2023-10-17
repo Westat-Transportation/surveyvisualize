@@ -4,7 +4,7 @@ NULL
 
 #' @title Make Interactive Maps
 #'
-#' @description Make interactive maps utilizing \link[ggiraph]{ggiraph}.
+#' @description Make interactive maps utilizing \link[ggiraph]{girafe}.
 #'
 #' @param tbl Analysis table (data.table object).
 #' @param tbl_geo_id Name of the geography variable in tbl.
@@ -14,14 +14,14 @@ NULL
 #' @param tbl2 Optional second table. Requires same geography group variable as tbl. tbl2 gets passed to \link[surveyvisualize]{make_chart} and output as an interactive tooltip over the matching tbl geography.
 #' @param confidence Confidence level for margin of error calculation. Defaults to 0.90. Set to NULL for standard error.
 #' @param ... Optional formatting arguments. See \link[surveyvisualize]{format_values}.
-#' @return ggiraph/htmlwidget class object
+#' @return girafe/htmlwidget class object
 #' 
 #' @import ggiraph
 
 #' @export
 make_map <- function(tbl, tbl_geo_id, geo_layer, geo_layer_id = guess_geo_layer_id(geo_layer),
                       geo_layer_name = guess_geo_layer_name(geo_layer), tbl2 = NULL, 
-                     confidence = 0.95, use_ggiraph = TRUE, ...) {
+                     confidence = 0.95, use_girafe = TRUE, ...) {
   
   loginfo(paste('Calling map maker:', format(match.call())))
 
@@ -126,7 +126,7 @@ make_map <- function(tbl, tbl_geo_id, geo_layer, geo_layer_id = guess_geo_layer_
       labels = format_values_call
     )
 
-  if (use_ggiraph == TRUE) {
+  if (use_girafe == TRUE) {
       # Render girafe plot
       gg <- girafe(ggobj = gg)
       girafe_options(

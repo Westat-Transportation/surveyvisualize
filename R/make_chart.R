@@ -1,20 +1,20 @@
 #' @title Make Interactive Charts
 #'
-#' @description Make interactive bar charts utilizing \link[ggiraph]{ggiraph}.
+#' @description Make interactive bar charts utilizing \link[ggiraph]{girafe}.
 #'
 #' @param tbl Analysis table (data.table object).
 #' @param x character. Variable to be displayed along x-axis.
 #' @param y character. Response variable.
 #' @param fill character. Variable to be categorized using interior coloring.
 #' @param facet logical. Variable to be categorized by faceted grid.
-#' @param interactive logical. Print as ggpplot object instead ggiraph object?
+#' @param interactive logical. Print as girafe object instead of ggplot object?
 #' @param order logical. Order by values instead of natural order?
 #' @param flip logical. Flip x and y axes?
-#' @param flat_print logical. Print as ggpplot object instead ggiraph object?
+#' @param flat_print logical. Print as ggplot object instead of girafe object?
 #' @param palette character. A color pallete to be used for the fill variable. See pallete argument here \link[ggplot2]{scale_fill_brewer}
 #' @param legend logical. Include a legend?
 #' @param confidence Confidence level for margin of error calculation. Defaults to 0.90. Set to NULL for standard error.
-#' @param ggiraph_options Optional list of options to pass to \link[ggiraph]{ggiraph}.
+#' @param girafe_options Optional list of options to pass to \link[ggiraph]{girafe}.
 #' @param ... Optional formatting arguments. See \link[surveyvisualize]{format_values}.
 #'
 #' @import ggiraph
@@ -24,7 +24,7 @@
 make_chart <- function(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL, interactive = TRUE,
                        order = FALSE, flip = FALSE, palette = 'Set3', variable_labels = TRUE, 
                        label_options = list(wrap = 35, trunc = 100), legend = TRUE, confidence = 0.95, 
-                       use_ggiraph = TRUE, ggiraph_options = list(), ...) {
+                       use_girafe = TRUE, girafe_options = list(), ...) {
 
   loginfo(paste('Calling chart maker:', format(match.call())))
   
@@ -190,16 +190,16 @@ make_chart <- function(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL, inter
   if(flip) g <- g + coord_flip()
 
   if(
-    (use_ggiraph == TRUE & !isTRUE(getOption('knitr.in.progress')))
-    | (use_ggiraph == TRUE & is_html_output())
+    (use_girafe == TRUE & !isTRUE(getOption('knitr.in.progress')))
+    | (use_girafe == TRUE & is_html_output())
     ) {
-    ggiraph_options_default <- list(
+    girafe_options_default <- list(
       ggobj = g,
       hover_css = 'opacity: 0.5;stroke: #ffec8b; cursor: crosshair;'
     )
-    do.call(ggiraph, c(
-        ggiraph_options_default[!names(ggiraph_options_default) %in% names(ggiraph_options)],
-        ggiraph_options
+    do.call(girafe, c(
+        girafe_options_default[!names(girafe_options_default) %in% names(girafe_options)],
+        girafe_options
       )
     )
   } else g
