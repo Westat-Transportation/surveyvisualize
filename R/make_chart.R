@@ -195,7 +195,8 @@ make_chart <- function(tbl, x = NULL, y = NULL, fill = NULL, facet = NULL, inter
     ) {
     girafe_options_default <- list(
       ggobj = g,
-      hover_css = 'opacity: 0.5;stroke: #ffec8b; cursor: crosshair;'
+      #hover_css = 'opacity: 0.5;stroke: #ffec8b; cursor: crosshair;'
+      opts_hover(css = "opacity: 0.5; stroke: #ffec8b; cursor: crosshair;")
     )
     do.call(girafe, c(
         girafe_options_default[!names(girafe_options_default) %in% names(girafe_options)],
